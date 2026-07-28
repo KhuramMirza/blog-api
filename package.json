@@ -2,7 +2,7 @@
   "name": "blog_api",
   "version": "1.0.0",
   "description": "",
-  "types": "module",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch server.js"
@@ -10,8 +10,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "zod": "^4.4.3"
   }
 }
