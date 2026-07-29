@@ -1,0 +1,26 @@
+[
+  {
+    "id": "5cf691f7-670a-4246-9cd3-7836563cf90d",
+    "title": "This is a Post",
+    "content": "WOW! This might be a nice post!",
+    "createdAt": "1785245866642"
+  },
+  {
+    "id": "efc05630-5fd4-4e81-810c-105ca939fbf5",
+    "title": "This is a Second Post",
+    "content": "WOW! This might be a nice post!",
+    "createdAt": "1785246082267"
+  },
+  {
+    "id": "a5318239-8320-4527-be56-2007ad59732f",
+    "title": "This is a third Post",
+    "content": "WOW! This might be a nice post!",
+    "createdAt": "1785310144354"
+  },
+  {
+    "id": "dc87a5e3-ac41-44aa-af90-feff59852f8d",
+    "title": "This is a fourth Post",
+    "content": "WOW! This might be a nice post!",
+    "createdAt": "1785310149385"
+  }
+]

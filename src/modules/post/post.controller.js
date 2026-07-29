@@ -1,0 +1,56 @@
+import * as postService from "./post.service.js";
+import { AppError } from "../../utils/AppError.js";
+
+export const createPost = async (req, res) => {
+  const post = await postService.createPost(req.body);
+  return res.status(201).json({
+    success: true,
+    message: "Post successfully created",
+    data: { post },
+  });
+};
+
+export const getPosts = async (req, res) => {
+  const page = Number.parseInt(req.query.page) || 1;
+  const limit = Number.parseInt(req.query.limit) || 5;
+
+  const result = await postService.getPosts(page, limit);
+  return res.status(200).json({
+    success: true,
+    ...result,
+  });
+};
+
+export const getPostById = async (req, res, next) => {
+  const post = await postService.getPostById(req.params.id);
+  if (!post) {
+    throw new AppError("Not post found with this ID", 404);
+  }
+  console.log(post);
+  return res.status(200).json({
+    success: true,
+    message: "Post successfully fetched",
+    data: { post },
+  });
+};
+
+export const updatePost = async (req, res, next) => {
+  const updatedPost = await postService.updatePost(req.params.id, req.body);
+  if (!updatedPost) {
+    throw new AppError("Not post found with this ID", 404);
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: "Post updated successfully",
+    data: updatedPost,
+  });
+};
+
+export const deletePost = async (req, res, next) => {
+  const post = await postService.deletePost(req.params.id);
+  if (!post) {
+    throw new AppError("Not post found with this ID", 404);
+  }
+  return res.status(204).send();
+};
