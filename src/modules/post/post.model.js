@@ -21,6 +21,9 @@ class JsonModel {
   }
 
   async #writeData(data) {
+    const dirPath = path.dirname(this.filePath);
+
+    await fs.mkdir(dirPath, { recursive: true });
     await fs.writeFile(this.filePath, JSON.stringify(data, null, 2), "utf8");
   }
 
@@ -47,20 +50,32 @@ class JsonModel {
 
   async findByIdAndUpdate(id, updatedData) {
     const data = await this.#readData();
-    const item = data.filter((item) => item.id === id);
-    const newItem = { ...item, ...updatedData, createdAt: Date.now() };
-    await this.#writeData(
-      data.filter((item) => item.id !== newItem).push(newItem),
-    );
+    const index = data.findIndex((item) => item.id === id);
+    if (index === -1) {
+      return null;
+    }
+    const updatedItem = {
+      ...data[index],
+      ...updatedData,
+      createdAt: Date.now().toString(),
+    };
+
+    data[index] = updatedItem;
+    await this.#writeData(data);
+
+    return updatedItem;
   }
 
   async findByIdAndDelete(id) {
     const data = await this.#readData();
-    const item = data.filter((item) => item.id === id);
-    if (!item) {
-      throw new Error(`Could not find item: ${id}`);
+    const index = data.findIndex((item) => item.id === id);
+    if (index === -1) {
+      return null;
     }
-    await this.#writeData(data.filter((item) => item.id !== id));
+    const filteredItems = data.filter((item) => item.id !== id);
+
+    await this.#writeData(filteredItems);
+    return true;
   }
 }
 
