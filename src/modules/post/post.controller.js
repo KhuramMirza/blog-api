@@ -11,13 +11,12 @@ export const createPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
-  const page = Number.parseInt(req.query.page) || 1;
-  const limit = Number.parseInt(req.query.limit) || 5;
+  const result = await postService.getPosts(req.query);
 
-  const result = await postService.getPosts(page, limit);
   return res.status(200).json({
     success: true,
-    ...result,
+    numPosts: result.length,
+    result,
   });
 };
 

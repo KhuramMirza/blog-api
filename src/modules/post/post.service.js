@@ -1,32 +1,30 @@
-import postModel from "./post.model.js";
-
+import { PostModel } from "./post.model.js";
+import { APIFeatures } from "../../utils/apiFeatures.js";
 export const createPost = async (payload) => {
-  return await postModel.create(payload);
+  return await PostModel.create(payload);
 };
 
-export const getPosts = async (page = 1, limit = 5) => {
-  const posts = await postModel.find();
-  const startIndex = (page - 1) * limit;
-  const endIndex = page * limit;
-  const paginatedPosts = posts.slice(startIndex, endIndex);
+export const getPosts = async (queryString) => {
+  const features = new APIFeatures(PostModel.find(), queryString)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
 
-  return {
-    total: posts.length,
-    page: Number(page),
-    limit: Number(limit),
-    totalPages: Math.ceil(posts.length / limit),
-    data: paginatedPosts,
-  };
+  return await features.query;
 };
 
 export const getPostById = async (id) => {
-  return await postModel.findById(id);
+  return await PostModel.findById(id);
 };
 
 export const updatePost = async (id, payload) => {
-  return await postModel.findByIdAndUpdate(id, payload);
+  return await PostModel.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
 };
 
 export const deletePost = async (id) => {
-  return await postModel.findByIdAndDelete(id);
+  return await PostModel.findByIdAndDelete(id);
 };
