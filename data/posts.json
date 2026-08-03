@@ -1,32 +1,50 @@
 [
   {
-    "id": "5cf691f7-670a-4246-9cd3-7836563cf90d",
-    "title": "This is a Post",
-    "content": "WOW! This might be a nice post!",
-    "createdAt": "1785245866642"
+    "title": "Understanding Event Loops in Node.js",
+    "content": "The Event Loop is what allows Node.js to perform non-blocking I/O operations despite JavaScript being single-threaded. It offloads operations to the system kernel whenever possible.",
+    "createdAt": { "$date": "2026-08-01T10:00:00Z" },
+    "updatedAt": { "$date": "2026-08-01T10:00:00Z" }
   },
   {
-    "id": "efc05630-5fd4-4e81-810c-105ca939fbf5",
-    "title": "This is a Second Post",
-    "content": "WOW! This might be a nice post!",
-    "createdAt": "1785246082267"
+    "title": "Why MongoDB Fits Modern Web Apps",
+    "content": "MongoDB's flexible schema approach allows developers to iterate quickly without spending hours managing complex relational database migrations in early phases.",
+    "createdAt": { "$date": "2026-08-01T14:30:00Z" },
+    "updatedAt": { "$date": "2026-08-01T14:30:00Z" }
   },
   {
-    "id": "a5318239-8320-4527-be56-2007ad59732f",
-    "title": "This is a third Post",
-    "content": "WOW! This might be a nice post!",
-    "createdAt": "1785310144354"
+    "title": "Stateless vs Stateful Authentication",
+    "content": "Stateless auth using JWTs eliminates the need to keep session state in server memory, making horizontal scaling across multiple application instances seamless.",
+    "createdAt": { "$date": "2026-08-02T09:15:00Z" },
+    "updatedAt": { "$date": "2026-08-02T09:15:00Z" }
   },
   {
-    "id": "dc87a5e3-ac41-44aa-af90-feff59852f8d",
-    "title": "This is a fourth Post",
-    "content": "WOW! This might be a nice post!",
-    "createdAt": "1785310149385"
+    "title": "Mastering the Clean Architecture Pattern",
+    "content": "Separating controllers, services, and models ensures your core business logic remains independent of the database and external HTTP delivery mechanisms.",
+    "createdAt": { "$date": "2026-08-02T11:45:00Z" },
+    "updatedAt": { "$date": "2026-08-02T11:45:00Z" }
   },
   {
-    "id": "3b59ad7f-70d2-4a34-8458-cc5241c08033",
-    "title": "This is the Fifth Post. Edited",
-    "content": "WOW! This might be a nice post!",
-    "createdAt": "1785412858667"
+    "title": "Optimizing Query Performance with Indexing",
+    "content": "Database indexes decrease query execution times from linear scans to logarithmic log-time lookups. Always index fields used in frequent lookups and sorting.",
+    "createdAt": { "$date": "2026-08-02T16:20:00Z" },
+    "updatedAt": { "$date": "2026-08-02T16:20:00Z" }
+  },
+  {
+    "title": "A Quick Primer on Big O Notation",
+    "content": "Big O notation measures the efficiency of an algorithm in terms of time and space execution as the input size grows toward infinity.",
+    "createdAt": { "$date": "2026-08-03T08:05:00Z" },
+    "updatedAt": { "$date": "2026-08-03T08:05:00Z" }
+  },
+  {
+    "title": "Why You Should Avoid `.skip()` in Production",
+    "content": "Mongoose `.skip()` scans past every document before returning results, resulting in linear O(n) degradation on large datasets. Use cursor-based pagination instead.",
+    "createdAt": { "$date": "2026-08-03T10:10:00Z" },
+    "updatedAt": { "$date": "2026-08-03T10:10:00Z" }
+  },
+  {
+    "title": "Introduction to Vector Search in AI Applications",
+    "content": "Vector embeddings represent complex unstructured data as dense numerical arrays, allowing vector databases to perform high-dimensional similarity searches.",
+    "createdAt": { "$date": "2026-08-03T13:40:00Z" },
+    "updatedAt": { "$date": "2026-08-03T13:40:00Z" }
   }
 ]
