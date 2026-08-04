@@ -2,7 +2,14 @@ import * as postService from "./post.service.js";
 import { AppError } from "../../utils/AppError.js";
 
 export const createPost = async (req, res) => {
-  const post = await postService.createPost(req.body);
+  console.log(req.user);
+  const payload = {
+    title: req.body.title,
+    content: req.body.content,
+    author: req.user.id,
+  };
+
+  const post = await postService.createPost(payload);
   return res.status(201).json({
     success: true,
     message: "Post successfully created",
@@ -34,10 +41,11 @@ export const getPostById = async (req, res, next) => {
 };
 
 export const updatePost = async (req, res, next) => {
-  const updatedPost = await postService.updatePost(req.params.id, req.body);
-  if (!updatedPost) {
-    throw new AppError("Not post found with this ID", 404);
-  }
+  const updatedPost = await postService.updatePost(
+    req.params.id,
+    req.body,
+    req.user.id,
+  );
 
   return res.status(200).json({
     success: true,
@@ -47,9 +55,6 @@ export const updatePost = async (req, res, next) => {
 };
 
 export const deletePost = async (req, res, next) => {
-  const post = await postService.deletePost(req.params.id);
-  if (!post) {
-    throw new AppError("Not post found with this ID", 404);
-  }
+  const post = await postService.deletePost(req.params.id, req.user.id);
   return res.status(204).send();
 };
