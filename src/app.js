@@ -1,12 +1,23 @@
 import express from "express";
 import helmet from "helmet";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+
 import { AppError } from "./utils/AppError.js";
 import { globalErrorHandler } from "../middleware/error.middleware.js";
+
 import postRoute from "./modules/post/post.route.js";
 import authRoutes from "./modules/auth/auth.route.js";
 
 const app = express();
 
+const corsOptions = {
+  origin: " http://localhost:5173",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(helmet());
 app.use(express.json());
 

@@ -6,13 +6,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --env-file=.env --watch server.js",
-    "prod": "node --env-file=.env.production server.js"
+    "prod": "node --env-file=.env.production --watch server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.3",
