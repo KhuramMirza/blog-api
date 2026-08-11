@@ -38,3 +38,14 @@ export const login = async (req, res) => {
     },
   });
 };
+
+export const getCurrentUser = async (req, res) => {
+  const user = await authService.getCurrentUser(req.user.id);
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      user: user,
+    },
+  });
+};

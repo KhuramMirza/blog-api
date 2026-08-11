@@ -30,3 +30,12 @@ export const login = async (email, password) => {
   user.password = undefined;
   return { user, token };
 };
+
+export const getCurrentUser = async (id) => {
+  const user = await userService.findUserById(id);
+  if (!user) {
+    throw new AppError("Invalid user", 401);
+  }
+
+  return user;
+};
