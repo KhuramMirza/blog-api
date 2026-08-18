@@ -11,6 +11,8 @@ router
   .post(verifyToken, validate(createPostSchema), postController.createPost)
   .get(postController.getPosts);
 
+router.get("/me", verifyToken, postController.getUserPosts);
+
 router
   .route("/:id")
   .get(postController.getPostById)

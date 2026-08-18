@@ -15,6 +15,19 @@ export const getPosts = async (queryString) => {
   return await features.query;
 };
 
+export const getUserPosts = async (queryString, authorId) => {
+  const features = new APIFeatures(
+    PostModel.find({ author: authorId }),
+    queryString,
+  )
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
+
+  return await features.query;
+};
+
 export const getPostById = async (id) => {
   return await PostModel.findById(id);
 };

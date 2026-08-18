@@ -2,7 +2,6 @@ import * as postService from "./post.service.js";
 import { AppError } from "../../utils/AppError.js";
 
 export const createPost = async (req, res) => {
-  console.log(req.user);
   const payload = {
     title: req.body.title,
     content: req.body.content,
@@ -27,12 +26,22 @@ export const getPosts = async (req, res) => {
   });
 };
 
+export const getUserPosts = async (req, res) => {
+  const result = await postService.getUserPosts(req.query, req.user.id);
+
+  return res.status(200).json({
+    success: true,
+    numPosts: result.length,
+    result,
+  });
+};
+
 export const getPostById = async (req, res, next) => {
   const post = await postService.getPostById(req.params.id);
   if (!post) {
     throw new AppError("Not post found with this ID", 404);
   }
-  console.log(post);
+
   return res.status(200).json({
     success: true,
     message: "Post successfully fetched",
