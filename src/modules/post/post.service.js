@@ -41,7 +41,7 @@ export const updatePost = async (id, payload, author) => {
     throw new AppError("You don't have authorization to edit this post.", 403);
   }
   return await PostModel.findByIdAndUpdate(id, payload, {
-    new: true,
+    returnDocuments: "after",
     runValidators: true,
   });
 };
