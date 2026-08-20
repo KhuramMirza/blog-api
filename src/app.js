@@ -17,10 +17,11 @@ const corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
 };
+app.set("trust proxy", 1);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 400,
   message: "Too many requests from this IP, please try again later.",
 });
 
